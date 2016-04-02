@@ -1,0 +1,23 @@
+<div ng-controller='TeamController'>
+	<form class="col-xs-12 form form-horizontal">
+		<div class="form-group col-xs-12">
+			<label class='col-xs-2' for='name' class='control-label'>Name</label>
+			<div class="col-xs-4">
+				<input type='text' class='form-control' id='name' ng-model='newTeam.name'>
+			</div>
+			<button type='submit' class='btn col-xs-3' ng-click='addTeam()'>Add Player</button>
+		</div>
+	</form>	
+	<div class="col-xs-12 table_div">
+		<table class='table table-condensed table-striped table-bordered table-hover'>
+			<tr>
+				<th>Team Name</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat='x in teams'>
+				<td>{{ x.name }}</td>
+				<td><button class='btn col-xs-3' ng-click='remove(x)'>Remove Team</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
