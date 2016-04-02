@@ -1,6 +1,7 @@
 {
-	"name":"Players and Teams", 
-	"dependencies":{
-		
-	}
+  "name": "Players and Teams",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
 }
