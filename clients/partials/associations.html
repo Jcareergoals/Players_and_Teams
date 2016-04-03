@@ -16,7 +16,7 @@
 		</div>
 		<!-- <input  type='text' ng-model='add.player'> -->
 		<div class="form-group col-xs-3">
-			<button class='form-control' ng-click='addAssociation()'>Assign Player to Team</button>
+			<button class='btn btn-default' ng-click='addAssociation()'>Assign Player to Team</button>
 		</div>
 	</form>	
 	<div class="col-xs-12 table_div">
@@ -29,7 +29,7 @@
 			<tr ng-repeat='x in assignments'>
 				<td>{{ x.player }}</td>
 				<td>{{ x.team }}</td>
-				<td><button ng-click='remove(x)'>Clear Assignment</button></td>
+				<td><button class='btn btn-default' ng-click='remove(x)'>Clear Assignment</button></td>
 			</tr>
 		</table>
 	</div>
