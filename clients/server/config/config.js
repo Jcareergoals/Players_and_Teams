@@ -32,7 +32,10 @@ myApp.factory('TeamFactory', function(){
 		{name:"Seahawks"}, 
 		{name:"49ers"}, 
 		{name:"Honeybadgers"}]; 
-	var factory = {}; 
+	var team_player_associations = [{player:"Speros", team:"Seehawks"}, 
+									{player:"Jimmy", team:"49ers"}]; 
+	var factory = {};
+	// teams  
 	factory.getTeams = function(callback){
 		callback(Teams);
 	}
@@ -42,7 +45,17 @@ myApp.factory('TeamFactory', function(){
 	factory.removeTeam = function(data){
 		Teams.splice(Teams.indexOf(data), 1);
 	}
-	return factory; 
+	// associations
+	factory.getAssociations = function(callback){
+		callback(team_player_associations); 
+	}
+	factory.addAssociations = function(data){
+		team_player_associations.push(data); 
+	}
+	factory.removeAssociations = function(data){
+		team_player_associations.splice(team_player_associations.indexOf(data), 1);
+	}
+	return factory;
 }); 
 
 // controllers
@@ -73,5 +86,22 @@ myApp.controller('TeamController', function($scope, TeamFactory){
 	}
 }); 
 myApp.controller('AssociationsController', function($scope, PlayerFactory, TeamFactory){
-
+	$scope.associations = {}; 
+	PlayerFactory.getPlayers(function(data){
+		$scope.associations.players = data; 
+	}); 
+	TeamFactory.getTeams(function(data){
+		$scope.associations.teams = data; 
+	}); 
+	// hardcoded assignments 
+	TeamFactory.getAssociations(function(data){
+		$scope.assignments = data; 
+	}); 
+	$scope.addAssociation = function(){
+		TeamFactory.addAssociations($scope.add);
+		$scope.add = {};
+	}
+	$scope.remove = function(data){
+		TeamFactory.removeAssociations(data); 
+	}
 }); 

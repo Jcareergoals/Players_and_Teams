@@ -1,0 +1,36 @@
+<div ng-controller='AssociationsController'>
+	<form class="col-xs-12 form form-horizontal">
+		<div class="form-group col-xs-3">
+			<div class="col-xs-12">
+				<select class='form-control' ng-model='add.player'>
+					<option ng-repeat='p in associations.players' ng-selected='p.name'>{{ p.name }}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-xs-3">
+			<div class="col-xs-12">
+				<select class='form-control' ng-model='add.team'>
+					<option type='option' ng-repeat='t in associations.teams' ng-selected='t.name'>{{ t.name }}</option>
+				</select>
+			</div>
+		</div>
+		<!-- <input  type='text' ng-model='add.player'> -->
+		<div class="form-group col-xs-3">
+			<button class='form-control' ng-click='addAssociation()'>Assign Player to Team</button>
+		</div>
+	</form>	
+	<div class="col-xs-12 table_div">
+		<table class='table table-condensed table-striped table-bordered table-hover'>
+			<tr>
+				<th>Name</th>
+				<th>Team</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat='x in assignments'>
+				<td>{{ x.player }}</td>
+				<td>{{ x.team }}</td>
+				<td><button ng-click='remove(x)'>Clear Assignment</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
